@@ -91,7 +91,22 @@ def main_diagonal_traversal(grid):
 # in the direction of the secondary diagonal and returning the
 # coordinates (row, column).
 def secondary_diagonal_traversal(grid):
-    return []
+    x = []
+    for i in range(len(grid)):
+        y = i
+        z = 0
+        while z < len(grid[0]) and y >= 0:
+            x.append((y, z))
+            y -= 1
+            z += 1
+    for j in range(1, len(grid[0])):
+        y = len(grid) - 1
+        z = j
+        while z < len(grid[0]) and y >= 0:
+            x.append((y, z))
+            y -= 1
+            z += 1
+    return x
 
 
 # Iterates over a 2D list in spiral order and returning the
