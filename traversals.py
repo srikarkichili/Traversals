@@ -112,4 +112,32 @@ def secondary_diagonal_traversal(grid):
 # Iterates over a 2D list in spiral order and returning the
 # coordinates (row, column).
 def spiral_traversal(grid):
-    return []
+    x = []
+    
+    y = len(grid)
+    z = len(grid[0])
+
+    a = 0
+    b = y - 1
+    c = 0
+    d = z - 1
+
+    while c <= d and a <= b:
+        for i in range(c, d + 1):
+            x.append((a, i))
+        a += 1
+
+        for j in range(a, b + 1):
+            x.append((j, d))
+        d -= 1
+
+        if c <= d:
+            for j in range(b, a - 1, -1):
+                x.append((j, c))
+        c += 1
+
+        if a <= b:
+            for i in range(d, c - 1, -1):
+                x.append((b, i))
+        b -= 1
+    return x
