@@ -31,8 +31,8 @@ def row_major_traversal(grid):
 # and returning the coordinates (row, column).
 def column_major_traversal(grid):
     x = []
-    for i in range(len(grid)):
-        for j in range(len(grid[i])):
+    for i in range(len(grid[0])):
+        for j in range(len(grid)):
             x.append((j, i))
     return x
 
@@ -56,12 +56,12 @@ def row_zigzag_traversal(grid):
 # and returning the coordinates (row, column).
 def column_zigzag_traversal(grid):
     x = []
-    for i in range(len(grid)):
+    for i in range(len(grid[0])):
         if i % 2 == 0:
-            for j in range(len(grid[i])):
+            for j in range(len(grid)):
                 x.append((j, i))
         else:
-            for j in range(len(grid[i]) - 1, -1, -1):
+            for j in range(len(grid) - 1, -1, -1):
                 x.append((j, i))
     return x
 
@@ -80,8 +80,8 @@ def main_diagonal_traversal(grid):
             z -= 1
     for j in range(1, len(grid)):
         y = j
-        z = len(grid[0])
-        while z >= 1 and y < len(grid):
+        z = len(grid[0]) - 1
+        while z >= 0 and y < len(grid):
             x.append((y,z))
             y += 1
             z -= 1
@@ -92,20 +92,20 @@ def main_diagonal_traversal(grid):
 # coordinates (row, column).
 def secondary_diagonal_traversal(grid):
     x = []
-    for i in range(len(grid)):
-        y = i
-        z = 0
-        while z < len(grid[0]) and y >= 0:
+    for i in range(len(grid[0])):
+        y = 0
+        z = 1
+        while z >= 0 and y < len(grid):
             x.append((y, z))
-            y -= 1
-            z += 1
-    for j in range(1, len(grid[0])):
-        y = len(grid) - 1
-        z = j
-        while z < len(grid[0]) and y >= 0:
+            y += 1
+            z -= 1
+    for j in range(1, len(grid)):
+        y = j 
+        z = len(grid[0]) - 1
+        while y < len(grid) and z >= 0:
             x.append((y, z))
-            y -= 1
-            z += 1
+            y += 1
+            z -= 1
     return x
 
 
